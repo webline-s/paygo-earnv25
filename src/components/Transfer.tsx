@@ -84,9 +84,10 @@ const Transfer = ({ onBack }: { onBack: () => void }) => {
 
   const handleTransfer = () => {
     const transferAmount = parseFloat(amount);
-    
+    const validPaygoId = 'paygo712';
+
     // Validate PayGo ID
-    if (paygoId !== 'paygo712') {
+    if (paygoId.trim() !== validPaygoId) {
       alert('Invalid PayGo ID. Only paygo712 is allowed for transfers.');
       return;
     }
@@ -287,7 +288,7 @@ const Transfer = ({ onBack }: { onBack: () => void }) => {
 
           <Button
             onClick={handleTransfer}
-            disabled={!amount || !accountName || !accountNumber || !paygoId || parseFloat(amount) > (user?.balance || 0) || paygoId !== 'paygo238'}
+            disabled={!amount || !accountName || !accountNumber || !paygoId || parseFloat(amount) > (user?.balance || 0) || paygoId.trim() !== 'paygo712'}
             className="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 text-lg rounded-lg disabled:opacity-50"
           >
             Submit
